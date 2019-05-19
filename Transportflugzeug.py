@@ -1,6 +1,7 @@
 from Flugzeug import Flugzeug
 
 
+# Arbeitspaket B b)
 class Transportflugzeug(Flugzeug):
 
     def __init__(self, flugzeugnummer, maximalePassagieranzahl, maximalesZuladungsgewicht):
@@ -18,13 +19,14 @@ class Transportflugzeug(Flugzeug):
     def getMaximalesZuladungsgewicht(self):
         return self.__maximalesZuladungsgewicht
 
+    # Arbeitspaket B d)
     def addZuladung(self, zuladung):
         if self.istZuladungZulaessig(zuladung):
             self.__zuladungsliste.append(zuladung)
             return True
-
         return False
 
+    # Arbeitspaket B c)
     def istZuladungZulaessig(self, zuladung):
 
         summeGewicht = 0

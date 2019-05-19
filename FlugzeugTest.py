@@ -1,5 +1,7 @@
 from Flugzeug import Flugzeug
 
+
+# Arbeitspaket A c)
 class FlugzeugTest():
 
     @staticmethod
