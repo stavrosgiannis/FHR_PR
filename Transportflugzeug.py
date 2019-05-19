@@ -14,16 +14,18 @@ class Transportflugzeug(Flugzeug):
         # Die Liste der Zuladungen:
         self.__zuladungsliste = []
 
+
     def getMaximalesZuladungsgewicht(self):
         return self.__maximalesZuladungsgewicht
 
-    def addZuladung(self, Zuladung):
-        if self.istZuladungZulaessig(Zuladung):
-            self.__zuladungsliste.append(Zuladung)
+    def addZuladung(self, zuladung):
+        if self.istZuladungZulaessig(zuladung):
+            self.__zuladungsliste.append(zuladung)
             return True
+
         return False
 
-    def istZuladungZulaessig(self, Zuladung):
+    def istZuladungZulaessig(self, zuladung):
 
         summeGewicht = 0
 
@@ -32,10 +34,10 @@ class Transportflugzeug(Flugzeug):
             dauerZuladung = zuladungVorhanden.dauer
             gewicht = zuladungVorhanden.gewicht
 
-            if (stundeStart <= Zuladung.start + Zuladung.dauer) and (Zuladung.start <= stundeStart + dauerZuladung):
+            if (stundeStart <= zuladung.start + zuladung.dauer) and (zuladung.start <= stundeStart + dauerZuladung):
                 summeGewicht = summeGewicht + gewicht
 
-        if summeGewicht + Zuladung.gewicht <= self.__maximalesZuladungsgewicht:
+        if summeGewicht + zuladung.gewicht <= self.__maximalesZuladungsgewicht:
             return True
         else:
             return False

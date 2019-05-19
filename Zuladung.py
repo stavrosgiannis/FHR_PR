@@ -4,3 +4,4 @@ class Zuladung():
         self.start = start
         self.dauer = dauer
         self.gewicht = gewicht
+

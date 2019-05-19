@@ -1,7 +1,6 @@
 from Transportflugzeug import Transportflugzeug
 from Zuladung import Zuladung
 
-
 class TransportflugzeugTest():
 
     @staticmethod

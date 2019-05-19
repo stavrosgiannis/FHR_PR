@@ -1,10 +1,10 @@
 from FlugzeugManager import FlugzeugManager
 
-
 class Passagierauslastung():
 
     def __init__(self):
         self.__auslastungMap = {}
+
 
     def setPassagierlisteProFlugzeug(self, flugzeugnummer, neueListe):
         flugzeug = FlugzeugManager.getReferenz().getFlugzeug(flugzeugnummer)
@@ -13,7 +13,7 @@ class Passagierauslastung():
             liste = []
 
             for element in neueListe:
-                if element <= 0:
+                if element > 0:
                     liste.append(element)
 
             self.__auslastungMap[flugzeugnummer] = liste
@@ -22,13 +22,13 @@ class Passagierauslastung():
         if flugzeugnummer in self.__auslastungMap:
             flugzeug = FlugzeugManager.getReferenz().getFlugzeug(flugzeugnummer)
             maximalePassagierzahl = flugzeug.getMaximalePassagieranzahl()
-            minimum = 0
+            minimum = -1.0
 
             liste = self.__auslastungMap[flugzeugnummer]
 
             for anzahl in liste:
-                if float(anzahl) / float(maximalePassagierzahl) * 100.0 < float(minimum):
-                    minimum = float(anzahl) / float(maximalePassagierzahl)
+                if minimum < 0 or float(anzahl) / float(maximalePassagierzahl) * 100.0 < float(minimum):
+                    minimum = float(anzahl) / float(maximalePassagierzahl) * 100.0
 
             return minimum
 
@@ -37,7 +37,7 @@ class Passagierauslastung():
     def getFlugzeugnummerMitNiedrigsterAuslastung(self):
 
         ergebnisFlugzeugnummer = None
-        minimum = 0.0
+        minimum = 110.0
 
         for flugzeugnummer in self.__auslastungMap.keys():
             if self.getMinimaleAuslastungInProzent(flugzeugnummer) < minimum:
@@ -45,3 +45,4 @@ class Passagierauslastung():
                 ergebnisFlugzeugnummer = flugzeugnummer
 
         return ergebnisFlugzeugnummer
+

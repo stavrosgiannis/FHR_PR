@@ -1,4 +1,5 @@
 class FlugzeugManager():
+
     __referenz = None
 
     def __init__(self):
@@ -10,10 +11,10 @@ class FlugzeugManager():
     def getReferenz():
         if FlugzeugManager.__referenz == None:
             FlugzeugManager.__referenz = FlugzeugManager()
-            return FlugzeugManager.__referenz
+        return FlugzeugManager.__referenz
 
     def addFlugzeug(self, flugzeug):
-        if flugzeug is None or not flugzeug.istFlugzeugGueltig():
+        if flugzeug == None or not flugzeug.istFlugzeugGueltig():
             return False
 
         flugzeugnummer = flugzeug.getFlugzeugnummer()
@@ -26,15 +27,12 @@ class FlugzeugManager():
             self.__sonstigeFlugzeugMap[flugzeugnummer] = flugzeug
 
     def getFlugzeug(self, flugzeugnummer):
-        if flugzeugnummer is None:
+        if flugzeugnummer == None:
             return None
 
         if flugzeugnummer[-2:] == "TP":
-            if flugzeugnummer in self.__transportflugzeugMap:
-                return self.__transportflugzeugMap[flugzeugnummer]
+            return self.__transportflugzeugMap[flugzeugnummer]
         elif flugzeugnummer[-1:] == "P":
-            if flugzeugnummer in self.__passagierflugzeugMap:
-                return self.__passagierflugzeugMap[flugzeugnummer]
+            return self.__passagierflugzeugMap[flugzeugnummer]
         else:
-            if flugzeugnummer in self.__sonstigeFlugzeugMap:
-                return self.__sonstigeFlugzeugMap[flugzeugnummer]
+            return self.__sonstigeFlugzeugMap[flugzeugnummer]

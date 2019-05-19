@@ -1,7 +1,5 @@
 from Flugzeug import Flugzeug
 
-
-# ---------------------------------------- c)-------------------------------------------------------
 class FlugzeugTest():
 
     @staticmethod
