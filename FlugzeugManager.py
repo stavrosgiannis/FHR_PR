@@ -1,5 +1,5 @@
 class FlugzeugManager():
-    # Arbeitspaket B a und b)
+    # Arbeitspaket c a und b)
     __referenz = None
 
     def __init__(self):
@@ -13,7 +13,7 @@ class FlugzeugManager():
             FlugzeugManager.__referenz = FlugzeugManager()
         return FlugzeugManager.__referenz
 
-    # Arbeitspaket B c)
+    # Arbeitspaket c c)
     def addFlugzeug(self, flugzeug):
         if flugzeug is None or not flugzeug.istFlugzeugGueltig():
             return False
